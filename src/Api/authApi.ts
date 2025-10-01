@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// TODO: Move to environment variable (VITE_API_BASE_URL)
-const API_URL = "http://localhost:5000/api/auth";
+// Resolve base URL from env (Vite) with fallback
+const API_URL = `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000'}/api/auth`;
 
 export interface LoginCredentials {
     email: string;
@@ -24,7 +24,7 @@ export interface SignupCredentials {
     password: string;
 }
 
-export interface SignupResponse extends LoginResponse {}
+export interface SignupResponse extends LoginResponse { }
 
 export const login = async (
     credentials: LoginCredentials
